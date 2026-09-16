@@ -1,0 +1,24 @@
+name: Translate Readme
+
+on:
+  push:
+    branches: ['**']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 3
+
+      - name: Auto Translate
+        uses: Lin-jun-xiang/action-translate-readme@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          langs: "zh-CN,zh-TW"
