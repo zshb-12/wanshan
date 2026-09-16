@@ -33,4 +33,7 @@ jobs:
         uses: Lin-jun-xiang/action-translate-readme@v2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          # Free tier of Zhipu AI. Leave the secret unset to fall back to the
+          # free g4f engine, which does not always survive GitHub's runner IPs.
+          zhipuai: ${{ secrets.zhipuai_api_key }}
           langs: "zh-CN,zh-TW"
