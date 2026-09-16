@@ -27,6 +27,13 @@ The action supports three back ends:
 
 This repository currently runs on the free `g4f` engine, so no API key is configured.
 
+## Notes on the upstream action
+
+The upstream action is pinned to `openai>=3` when no version is given, and that release refuses to
+build a client without an API key. Because the action creates its OpenAI client while importing the
+translation script, the free `g4f` path fails before it ever runs. The workflow therefore installs
+`openai<2` first, which keeps the no-key path working.
+
 ## Files in this repository
 
 - `README.md` - the English source document, edited by hand.
