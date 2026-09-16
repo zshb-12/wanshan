@@ -17,6 +17,17 @@ jobs:
         with:
           fetch-depth: 3
 
+      # The upstream action creates an OpenAI client while importing its script.
+      # openai>=2 refuses to build that client without an API key, which breaks
+      # the free g4f engine. Pinning openai<2 keeps the no-key path working.
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install a compatible OpenAI SDK
+        run: pip install "openai<2"
+
       - name: Auto Translate
         uses: Lin-jun-xiang/action-translate-readme@v2
         with:
