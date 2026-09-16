@@ -34,6 +34,9 @@ build a client without an API key. Because the action creates its OpenAI client 
 translation script, the free `g4f` path fails before it ever runs. The workflow therefore installs
 `openai<2` first, which keeps the no-key path working.
 
+The job also carries a `timeout-minutes` limit, because the free providers behind `g4f` can stall
+for a long time when one of them stops responding.
+
 ## Files in this repository
 
 - `README.md` - the English source document, edited by hand.
